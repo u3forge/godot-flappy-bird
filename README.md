@@ -1,5 +1,5 @@
 # godot-flappy-bird
-A clone of the famous screen breaking game Flappy Bird.  
+A clone of the famous screen breaking game Flappy Bird Made in Godot Game Engine.  
 <br /> 
 Flappy Bird is a mobile game developed by the Vietnamese video game artist and programmer Dong Nguyen. 
 <br />
