@@ -1,0 +1,344 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Sprites/BackGround.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Ground.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ColumnSprite.png" type="Texture" id=3]
+[ext_resource path="res://Sounds/Dead.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Fly.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Bird/got hit/frame-1.png" type="Texture" id=6]
+[ext_resource path="res://Bird/flying/frame-7.png" type="Texture" id=7]
+[ext_resource path="res://Bird/flying/frame-8.png" type="Texture" id=8]
+[ext_resource path="res://Bird/got hit/frame-2.png" type="Texture" id=9]
+[ext_resource path="res://Bird/flying/frame-2.png" type="Texture" id=10]
+[ext_resource path="res://Bird/flying/frame-3.png" type="Texture" id=11]
+[ext_resource path="res://Bird/flying/frame-4.png" type="Texture" id=12]
+[ext_resource path="res://Bird/flying/frame-1.png" type="Texture" id=13]
+[ext_resource path="res://Bird/flying/frame-5.png" type="Texture" id=14]
+[ext_resource path="res://Bird/flying/frame-6.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Bird.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/BackGround.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 373.148, 10.3386 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 57.8958, 501.875 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 29.9355, 31.6145 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 613.639, 481.41 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Flying",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "Hit",
+"speed": 15.0
+} ]
+
+[node name="Root" type="Node"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="BackGround" type="Sprite" parent="World"]
+texture = ExtResource( 1 )
+script = ExtResource( 17 )
+
+[node name="Ground" type="Sprite" parent="World/BackGround"]
+position = Vector2( 0, 320.966 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Ground/StaticBody2D"]
+position = Vector2( -4.11589, 133.345 )
+scale = Vector2( 2.75617, 11.6984 )
+shape = SubResource( 1 )
+
+[node name="Obstacle" type="Sprite" parent="World/BackGround" groups=["Obstacles"]]
+position = Vector2( -188.705, 698.478 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Obstacle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround/Obstacle"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround/Obstacle"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Obstacle/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Obstacle2" type="Sprite" parent="World/BackGround" groups=["Obstacles"]]
+position = Vector2( 324.327, 556.6 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Obstacle2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround/Obstacle2"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle2/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround/Obstacle2"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Obstacle2/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle2/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Obstacle3" type="Sprite" parent="World/BackGround" groups=["Obstacles"]]
+position = Vector2( 824.327, 556.6 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Obstacle3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle3/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround/Obstacle3"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle3/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround/Obstacle3"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround/Obstacle3/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround/Obstacle3/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="BackGround2" type="Sprite" parent="World"]
+position = Vector2( 2048, 0 )
+texture = ExtResource( 1 )
+script = ExtResource( 17 )
+
+[node name="Ground" type="Sprite" parent="World/BackGround2"]
+position = Vector2( 0, 320.966 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Ground/StaticBody2D"]
+position = Vector2( -4.11589, 133.345 )
+scale = Vector2( 2.75617, 11.6984 )
+shape = SubResource( 1 )
+
+[node name="Obstacle" type="Sprite" parent="World/BackGround2" groups=["Obstacles"]]
+position = Vector2( -175.673, 556.6 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround2/Obstacle"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround2/Obstacle"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Obstacle4" type="Sprite" parent="World/BackGround2" groups=["Obstacles"]]
+position = Vector2( -675.673, 556.6 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle4/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround2/Obstacle4"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle4/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround2/Obstacle4"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle4/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle4/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Obstacle2" type="Sprite" parent="World/BackGround2" groups=["Obstacles"]]
+position = Vector2( 324.327, 556.6 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround2/Obstacle2"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle2/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround2/Obstacle2"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle2/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle2/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Obstacle3" type="Sprite" parent="World/BackGround2" groups=["Obstacles"]]
+position = Vector2( 824.327, 556.6 )
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle3/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="World/BackGround2/Obstacle3"]
+position = Vector2( -0.717312, -598.241 )
+scale = Vector2( 2.04228, 2.73402 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle3/Area2D"]
+shape = SubResource( 3 )
+
+[node name="ColumnSprite2" type="Sprite" parent="World/BackGround2/Obstacle3"]
+position = Vector2( -1.52588e-05, -1200 )
+rotation = -3.14159
+texture = ExtResource( 3 )
+script = ExtResource( 18 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/BackGround2/Obstacle3/ColumnSprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BackGround2/Obstacle3/ColumnSprite2/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( -760.378, -118.256 )
+gravity_scale = 5.0
+contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2( 0.07, 0.07 )
+shape = SubResource( 4 )
+
+[node name="Bird" type="AnimatedSprite" parent="RigidBody2D"]
+position = Vector2( -41.2107, -44.6449 )
+scale = Vector2( 0.07, 0.07 )
+frames = SubResource( 5 )
+animation = "Flying"
+frame = 6
+playing = true
+centered = false
+script = ExtResource( 16 )
+force = 300
+
+[node name="Flyaudio" type="AudioStreamPlayer" parent="RigidBody2D/Bird"]
+stream = ExtResource( 5 )
+
+[node name="Deathaudio" type="AudioStreamPlayer" parent="RigidBody2D/Bird"]
+stream = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 18.641, 9.18633 )
+current = true
+zoom = Vector2( 1.8, 1.8 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+
+[node name="text" type="Label" parent="."]
+margin_left = -846.0
+margin_top = -411.0
+margin_right = -786.0
+margin_bottom = -397.0
+rect_scale = Vector2( 5, 5 )
+size_flags_horizontal = 3
+text = "Score"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -1019.0
+margin_top = 136.0
+margin_right = 1021.0
+margin_bottom = 580.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="World/BackGround/Obstacle/Area2D" to="World/BackGround/Obstacle" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="World/BackGround/Obstacle2/Area2D" to="World/BackGround/Obstacle2" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="World/BackGround/Obstacle3/Area2D" to="World/BackGround/Obstacle3" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="World/BackGround2/Obstacle/Area2D" to="World/BackGround2/Obstacle" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="World/BackGround2/Obstacle4/Area2D" to="World/BackGround2/Obstacle4" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="World/BackGround2/Obstacle2/Area2D" to="World/BackGround2/Obstacle2" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="World/BackGround2/Obstacle3/Area2D" to="World/BackGround2/Obstacle3" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D/Bird" method="_on_RigidBody2D_body_entered"]
+[connection signal="pressed" from="Button" to="RigidBody2D/Bird" method="_on_Button_pressed"]
